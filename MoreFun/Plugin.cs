@@ -5,44 +5,49 @@ using HarmonyLib;
 
 namespace MoreFun
 {
-    [BepInPlugin(modGUID, modName, modVersion)]
+    [BepInPlugin(PluginModInfo.MOD_GUID, PluginModInfo.MOD_NAME, PluginModInfo.MOD_VERSION)]
     public class MoreFunBase : BaseUnityPlugin
-    {
-        private const string modGUID = "me.iantapply.morefun";
-        private const string modName = "MoreFun";
-        private const string modVersion = "1.0.0.0";
-        
-        private readonly Harmony harmony = new Harmony(modGUID);
-
-        private static MoreFunBase instance;
-
-        internal ManualLogSource mls;
+    {   
+        private readonly Harmony harmony = new Harmony(PluginModInfo.MOD_GUID);
+        public static MoreFunBase instance;
+        internal ManualLogSource log;
 
         void Awake()
         {
-            if (instance == null)
+            if (instance == null) { instance = this; } // Set instance to this instance
+
+            log = Logger; // Set log to BepInEx logger
+            log.LogInfo($"{PluginModInfo.MOD_NAME} lethal company mod loading...");
+            Configuration.Init(); // Load config file with defaults
+            log.LogInfo($"{PluginModInfo.MOD_NAME} configuration loaded. Loading patches...");
+
+            if (Configuration.enableExperimentationMode.Value)
             {
-                instance = this;
+                harmony.PatchAll(typeof(AlwaysDrunkPatch));
+                harmony.PatchAll(typeof(LoudBoss));
+                harmony.PatchAll(typeof(LongLadder));
             }
 
-            mls = BepInEx.Logging.Logger.CreateLogSource(modGUID);
+            if (Configuration.enableAllEnemyVentsOpen.Value) { harmony.PatchAll(typeof(MakeEnemyVentsAllOpen)); }
+            if (Configuration.enableSilentLandmines.Value) { harmony.PatchAll(typeof(SilentLandmines)); }
+            if (Configuration.enableFlashlightsConnectedToShip.Value) { harmony.PatchAll(typeof(FlashlightsConnectedToShipLights)); }
+            if (Configuration.enableLightsGoBoom.Value) { harmony.PatchAll(typeof(LightsGoBoom)); }
+            if (Configuration.enableAlwaysFlickerLights.Value) { harmony.PatchAll(typeof(GuysIThinkItsAJinn)); }
+            if (Configuration.enableSlowCoilHead.Value) { harmony.PatchAll(typeof(SlowCoil)); }
+            if (Configuration.enableNutcrackerFastTurn.Value) { harmony.PatchAll(typeof(NutterPopAndLock)); }
+            if (Configuration.enableTestBodyMode.Value) { harmony.PatchAll(typeof(YouAreTestSubject)); }
 
-            mls.LogInfo("More Fun mod loaded");
-
-            // harmony.PatchAll(typeof(AlwaysDrunkPatch));
-            harmony.PatchAll(typeof(MakeEnemyVentsAllOpen));
-            harmony.PatchAll(typeof(SilentLandmines));
-            harmony.PatchAll(typeof(FlashlightsConnectedToShipLights));
-            harmony.PatchAll(typeof(LightsGoBoom));
-/*            harmony.PatchAll(typeof(LoudBoss));*/
-            harmony.PatchAll(typeof(GuysIThinkItsAJinn));
-            harmony.PatchAll(typeof(SlowCoil));
-            harmony.PatchAll(typeof(NutterPopAndLock));
-            harmony.PatchAll(typeof(YouAreTestSubject));
-/*            harmony.PatchAll(typeof(LongLadder));*/
-
-            // TODO: 
-
+            log.LogInfo($"{PluginModInfo.MOD_NAME} patches loaded. Happy playing!");
         }
+    }
+
+    /**
+     * Contains all plugin/mod related information
+    **/
+    class PluginModInfo
+    {
+        public const string MOD_GUID = "me.iantapply.morefun";
+        public const string MOD_NAME = "MoreFun";
+        public const string MOD_VERSION = "1.1.0";
     }
 }

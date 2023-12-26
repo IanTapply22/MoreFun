@@ -12,7 +12,6 @@ Adds more fun and wacky features to your game... live on the
 - Your body is in test mode, no clue what this even does
 
 ## TODO List
-- Add configs for every fun feature
 - Make the ladder WAY longer
 - Add a patch to make you slightly drunk
 - Make the company boss louder when you're on the planet

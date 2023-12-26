@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.cs" />
     <Compile Include="patches\AlwaysDrunkPatch.cs" />
     <Compile Include="patches\CouldYouHurryUp.cs" />
     <Compile Include="patches\FlashlightsConnectedToShipLights.cs" />
