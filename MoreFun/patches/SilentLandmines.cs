@@ -13,8 +13,6 @@ namespace MoreFun.patches
         {
             __instance.mineAudio.volume = 0f;
             __instance.mineFarAudio.volume = 0f;
-            // No clue bruh
-            __instance.SetOffMineAnimation();
         }
     }
 }

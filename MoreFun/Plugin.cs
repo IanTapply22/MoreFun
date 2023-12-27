@@ -36,10 +36,15 @@ namespace MoreFun
             if (Configuration.enableSlowCoilHead.Value) { harmony.PatchAll(typeof(SlowCoil)); }
             if (Configuration.enableNutcrackerFastTurn.Value) { harmony.PatchAll(typeof(NutterPopAndLock)); }
             if (Configuration.enableTestBodyMode.Value) { harmony.PatchAll(typeof(YouAreTestSubject)); }
+            if (Configuration.enableSilentSandWorm.Value) { harmony.PatchAll(typeof(WormGummy)); }
+            if (Configuration.enableFastCoil.Value) { harmony.PatchAll(typeof(FastCoil)); }
+            if (Configuration.enableFullViewTurrets.Value) { harmony.PatchAll(typeof(ILikeToSeeALot)); }
 
             log.LogInfo($"{PluginModInfo.MOD_NAME} patches loaded. Happy playing!");
         }
     }
+
+    // TODO: make everything fast, make fog in facility, make config in terminal
 
     /**
      * Contains all plugin/mod related information
@@ -48,6 +53,6 @@ namespace MoreFun
     {
         public const string MOD_GUID = "me.iantapply.morefun";
         public const string MOD_NAME = "MoreFun";
-        public const string MOD_VERSION = "1.1.0";
+        public const string MOD_VERSION = "1.2.0";
     }
 }

@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 namespace MoreFun.patches
 {
     [HarmonyPatch(typeof(SpringManAI))]
-    internal class SlowCoil
+    internal class FastCoil
     {
 
         [HarmonyPatch("Update")]
         [HarmonyPostfix]
-        static void slowAhhhhCoilHead(ref float ___currentChaseSpeed)
+        static void fastAhhhhCoilHead(ref float ___currentChaseSpeed)
         {
-            // slow ahhhh coil head
-            ___currentChaseSpeed = 5f;
+            // fast ahhhh coil head
+            ___currentChaseSpeed = 30f;
         }
     }
 }

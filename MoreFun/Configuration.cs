@@ -19,7 +19,9 @@ namespace MoreFun
         public static ConfigEntry<bool> enableSlowCoilHead;
         public static ConfigEntry<bool> enableNutcrackerFastTurn;
         public static ConfigEntry<bool> enableTestBodyMode;
-
+        public static ConfigEntry<bool> enableSilentSandWorm;
+        public static ConfigEntry<bool> enableFastCoil;
+        public static ConfigEntry<bool> enableFullViewTurrets;
 
         public static void Init()
         {
@@ -34,6 +36,10 @@ namespace MoreFun
             enableNutcrackerFastTurn = MoreFunBase.instance.Config.Bind("Experimentation Mode", "Enable Nutcracker Fast Turn", true, "Enable this to make nutcrackers turn fast.");
 
             enableTestBodyMode = MoreFunBase.instance.Config.Bind("Experimentation Mode", "Enable Test Body Mode", false, "Enable this to make ragdolls test bodies.");
-        }   
+
+            enableSilentSandWorm = MoreFunBase.instance.Config.Bind("Experimentation Mode", "Enable Silent Sand Worm", true, "Enable this to make sand worms silent.");
+            enableFastCoil = MoreFunBase.instance.Config.Bind("Experimentation Mode", "Enable Fast Coil", true, "Enable this to make coil heads fast.");
+            enableFullViewTurrets = MoreFunBase.instance.Config.Bind("Experimentation Mode", "Enable Full View Turrets", true, "Enable this to make turrets have a full view around them.");
+        }
     }
 }

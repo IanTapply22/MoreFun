@@ -70,8 +70,10 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="patches\AlwaysDrunkPatch.cs" />
     <Compile Include="patches\CouldYouHurryUp.cs" />
+    <Compile Include="patches\FastCoil.cs" />
     <Compile Include="patches\FlashlightsConnectedToShipLights.cs" />
     <Compile Include="patches\GuysIThinkItsAJinn.cs" />
+    <Compile Include="patches\ILikeToSeeALot.cs" />
     <Compile Include="patches\LightsGoBoom.cs" />
     <Compile Include="patches\LongLandder.cs" />
     <Compile Include="patches\LoudBoss.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="patches\NutterPopAndLock.cs" />
     <Compile Include="patches\SilentLandmines.cs" />
     <Compile Include="patches\SlowCoil.cs" />
+    <Compile Include="patches\WormGummy.cs" />
     <Compile Include="patches\YouAreTestSubject.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

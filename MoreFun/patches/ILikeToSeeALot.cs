@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 
 namespace MoreFun.patches
 {
-    [HarmonyPatch(typeof(SpringManAI))]
-    internal class SlowCoil
+    [HarmonyPatch(typeof(Turret))]
+    internal class ILikeToSeeALot
     {
-
         [HarmonyPatch("Update")]
         [HarmonyPostfix]
-        static void slowAhhhhCoilHead(ref float ___currentChaseSpeed)
+        static void aroundTheWorld(Turret __instance)
         {
-            // slow ahhhh coil head
-            ___currentChaseSpeed = 5f;
-        }
+            __instance.rotationRange = 359f;
+            }
     }
 }
